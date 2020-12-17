@@ -1,4 +1,4 @@
-package donation;
+package alms_box.donation;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

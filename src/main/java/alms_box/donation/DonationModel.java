@@ -1,7 +1,6 @@
-package donation;
+package alms_box.donation;
 
 import java.util.Objects;
-// import java.lang.management.ThreadInfo;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package donation;
+package alms_box.donation;
 
 class DonationNotFoundException extends RuntimeException {
   final static long serialVersionUID = 1;

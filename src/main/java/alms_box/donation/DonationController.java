@@ -1,4 +1,4 @@
-package donation;
+package alms_box.donation;
 
 import java.util.List;
 
