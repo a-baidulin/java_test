@@ -1,4 +1,4 @@
-package com.alms.AlmsBox;
+package donation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
