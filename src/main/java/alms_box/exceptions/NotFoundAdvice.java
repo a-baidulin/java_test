@@ -1,4 +1,4 @@
-package alms_box.donation;
+package alms_box.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class DonationNotFoundAdvice {
+class NotFoundAdvice {
 
   @ResponseBody
-  @ExceptionHandler(DonationNotFoundException.class)
+  @ExceptionHandler(NotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
-  String DonationNotFoundHandler(DonationNotFoundException ex) {
+  String DonationNotFoundHandler(NotFoundException ex) {
     return ex.getMessage();
   }
 }

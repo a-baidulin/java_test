@@ -6,17 +6,35 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import alms_box.user.User;
+import alms_box.donation_box.DonationBox;
 
 @Entity
-class Donation {
+public class Donation {
 
-  private @Id @GeneratedValue Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
+
+  @ManyToOne(optional = false)
+  @JoinColumn(name="user_id")
+  private User user;
+
+  @ManyToOne(optional = false)
+  @JoinColumn(name="donation_box_id")
+  private DonationBox donation_box;
+
+
   private int amount;       // Donation amount, in cents
   private LocalDate date;   // Donation date
 
-  Donation() {}
+  protected Donation() {}
 
-  Donation(int amount, LocalDate date) {
+  Donation(User user, int amount, LocalDate date) {
+    this.user = user;
     this.amount = amount;
     this.date = date;
   }
@@ -45,6 +63,14 @@ class Donation {
 
   public Long getId() {
     return id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
   // Method overrides

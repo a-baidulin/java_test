@@ -10,25 +10,40 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import alms_box.user.UserRepository;
+import alms_box.user.User;
+import alms_box.exceptions.NotFoundException;
+
+
 @RestController
 class DonationController {
 
-  private final DonationRepository repository;
+  private final DonationRepository donationRepository;
+  private final UserRepository userRepository;
 
-  DonationController(DonationRepository repository) {
-    this.repository = repository;
+  DonationController(DonationRepository donationRepository, UserRepository userRepository) {
+    this.donationRepository = donationRepository;
+    this.userRepository = userRepository;
   }
 
   // Aggregate root
 
   @GetMapping("/donations")
   List<Donation> all() {
-    return repository.findAll();
+    return donationRepository.findAll();
   }
 
   @PostMapping("/donations")
   Donation newDonation(@RequestBody Donation newDonation) {
-    return repository.save(newDonation);
+    Long user_id = newDonation.getUser().getId();
+    User donation_user = userRepository.findById(user_id)
+      .orElseThrow(() -> new NotFoundException(user_id));
+
+    donation_user.deductBalance(newDonation.getAmount());
+    userRepository.save(donation_user);
+
+    newDonation.setUser(donation_user);
+    return donationRepository.save(newDonation);
   }
 
   // Single item
@@ -36,27 +51,27 @@ class DonationController {
   @GetMapping("/donations/{id}")
   Donation one(@PathVariable Long id) {
 
-    return repository.findById(id)
-      .orElseThrow(() -> new DonationNotFoundException(id));
+    return donationRepository.findById(id)
+      .orElseThrow(() -> new NotFoundException(id));
   }
 
   @PutMapping("/donations/{id}")
   Donation replaceDonation(@RequestBody Donation newDonation, @PathVariable Long id) {
 
-    return repository.findById(id)
+    return donationRepository.findById(id)
       .map(Donation -> {
         Donation.setAmount(newDonation.getAmount());
         Donation.setDate(newDonation.getDate());
-        return repository.save(Donation);
+        return donationRepository.save(Donation);
       })
       .orElseGet(() -> {
         newDonation.setId(id);
-        return repository.save(newDonation);
+        return donationRepository.save(newDonation);
       });
   }
 
   @DeleteMapping("/donations/{id}")
   void deleteDonation(@PathVariable Long id) {
-    repository.deleteById(id);
+    donationRepository.deleteById(id);
   }
 }
