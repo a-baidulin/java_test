@@ -25,7 +25,7 @@ public class Donation {
 
   @ManyToOne(optional = false)
   @JoinColumn(name="donation_box_id")
-  private DonationBox donation_box;
+  private DonationBox donationBox;
 
 
   private int amount;       // Donation amount, in cents
@@ -33,8 +33,9 @@ public class Donation {
 
   protected Donation() {}
 
-  Donation(User user, int amount, LocalDate date) {
+  Donation(User user, DonationBox donationBox, int amount, LocalDate date) {
     this.user = user;
+    this.donationBox = donationBox;
     this.amount = amount;
     this.date = date;
   }
@@ -73,6 +74,13 @@ public class Donation {
     this.user = user;
   }
 
+  public DonationBox getDonationBox() {
+    return donationBox;
+  }
+
+  public void setDonationBox(DonationBox donationBox) {
+    this.donationBox = donationBox;
+  }
   // Method overrides
 
   @Override

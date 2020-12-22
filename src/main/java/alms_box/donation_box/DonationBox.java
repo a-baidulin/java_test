@@ -22,7 +22,7 @@ public class DonationBox {
   @GeneratedValue
   private Long id;
 
-  @OneToMany(mappedBy = "donation_box")
+  @OneToMany(mappedBy = "donationBox")
   private List<Donation> donations;
 
   @ManyToOne

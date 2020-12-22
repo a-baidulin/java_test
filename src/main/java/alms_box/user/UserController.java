@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import alms_box.donation.Donation;
 import alms_box.exceptions.NotFoundException;
 
 @RestController
@@ -38,6 +40,11 @@ class UserController {
 
     return repository.findById(id)
       .orElseThrow(() -> new NotFoundException(id));
+  }
+
+  @GetMapping("/users/{id}/donations")
+  List<Donation> list_donations(@PathVariable Long id) {
+    return repository.listDonations(id);
   }
 
   @PutMapping("/users/{id}")
