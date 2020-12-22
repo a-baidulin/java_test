@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import alms_box.user.UserRepository;
 import alms_box.user.User;
+import alms_box.donation.Donation;
 
 import alms_box.exceptions.NotFoundException;
 
@@ -70,6 +71,11 @@ public class DonationBoxController {
   @DeleteMapping("/donation_boxes/{id}")
   void deleteDonation(@PathVariable Long id) {
     donationBoxRepository.deleteById(id);
+  }
+
+  @GetMapping("/donation_boxes/{id}/donations")
+  List<Donation> list_donations(@PathVariable Long id) {
+    return donationBoxRepository.listDonations(id);
   }
 
 }
