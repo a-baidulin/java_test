@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  # web:
+  #   image: images/alms-box-docker
+  #   ports:
+  #     - "8080:8080"
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: "root"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "springuser"
+      MYSQL_PASSWORD: "ThePassword"
+      MYSQL_DATABASE: "MySQL_alms_box"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql/db_example:/alms_box
