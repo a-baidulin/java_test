@@ -1,4 +1,4 @@
-package alms_box.donation;
+package almsBox.donation;
 
 import java.util.Objects;
 import java.time.LocalDate;
@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import alms_box.user.User;
-import alms_box.donation_box.DonationBox;
+import almsBox.user.User;
+import almsBox.donationBox.DonationBox;
 
 @Entity
 public class Donation {
@@ -24,7 +24,7 @@ public class Donation {
   private User user;
 
   @ManyToOne(optional = false)
-  @JoinColumn(name="donation_box_id")
+  @JoinColumn(name="donationBox_id")
   private DonationBox donationBox;
 
 

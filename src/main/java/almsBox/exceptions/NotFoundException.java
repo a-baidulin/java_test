@@ -1,4 +1,4 @@
-package alms_box.exceptions;
+package almsBox.exceptions;
 
 public class NotFoundException extends RuntimeException {
   final static long serialVersionUID = 1;

@@ -1,4 +1,4 @@
-package alms_box.donation;
+package almsBox.donation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

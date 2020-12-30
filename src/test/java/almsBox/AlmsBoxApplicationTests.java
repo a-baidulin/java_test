@@ -1,4 +1,4 @@
-package alms_box;
+package almsBox;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

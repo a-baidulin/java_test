@@ -1,4 +1,4 @@
-package alms_box.user;
+package almsBox.user;
 
 import java.util.Objects;
 import java.util.List;
@@ -7,8 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import alms_box.donation.Donation;
-import alms_box.donation_box.DonationBox;
+import almsBox.donation.Donation;
+import almsBox.donationBox.DonationBox;
 
 @Entity
 public class User {
@@ -21,15 +21,15 @@ public class User {
   private List<Donation> donations;
 
   @OneToMany(mappedBy = "admin")
-  private List<DonationBox> donation_boxes_admin;
+  private List<DonationBox> donationBoxesAdmin;
 
   @OneToMany(mappedBy = "beneficiary")
-  private List<DonationBox> donation_boxes_beneficiary;
+  private List<DonationBox> donationBoxesBeneficiary;
 
   private String username;
   private String email;
   private String password;
-  private int account_balance;
+  private int accountBalance;
 
   protected User() {
   }
@@ -72,25 +72,25 @@ public class User {
     this.id = id;
   }
 
-  public int getAccount_balance() {
-    return account_balance;
+  public int getAccountBalance() {
+    return accountBalance;
   }
 
-  public void setAccount_balance(int account_balance) {
-    this.account_balance = account_balance;
+  public void setAccountBalance(int accountBalance) {
+    this.accountBalance = accountBalance;
   }
   // Utility methods
 
   public void deductBalance(int deduction) {
-    if(this.account_balance > deduction){
-      this.account_balance -= deduction;
+    if(this.accountBalance > deduction){
+      this.accountBalance -= deduction;
     }
-    else{this.account_balance = 0;}
+    else{this.accountBalance = 0;}
 
   }
 
   public void addBalance(int increase) {
-    this.account_balance+=increase;
+    this.accountBalance+=increase;
   }
 
   // Method overrides

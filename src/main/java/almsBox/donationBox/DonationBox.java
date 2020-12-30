@@ -1,4 +1,4 @@
-package alms_box.donation_box;
+package almsBox.donationBox;
 
 import java.time.LocalDate;
 
@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
-import alms_box.user.User;
-import alms_box.donation.Donation;
+import almsBox.user.User;
+import almsBox.donation.Donation;
 
 @Entity
 public class DonationBox {
@@ -35,8 +35,8 @@ public class DonationBox {
 
   private String name;
   private String description;
-  private LocalDate date_started;
-  private LocalDate date_ended;
+  private LocalDate dateStarted;
+  private LocalDate dateEnded;
 
   public DonationBox() {
   }
@@ -47,20 +47,20 @@ public class DonationBox {
   }
 
   // Getters and setters
-  public LocalDate getDate_ended() {
-    return date_ended;
+  public LocalDate getDateEnded() {
+    return dateEnded;
   }
 
-  public void setDate_ended(LocalDate date_ended) {
-    this.date_ended = date_ended;
+  public void setDateEnded(LocalDate dateEnded) {
+    this.dateEnded = dateEnded;
   }
 
-  public LocalDate getDate_started() {
-    return date_started;
+  public LocalDate getDateStarted() {
+    return dateStarted;
   }
 
-  public void setDate_started(LocalDate date_started) {
-    this.date_started = date_started;
+  public void setDateStarted(LocalDate dateStarted) {
+    this.dateStarted = dateStarted;
   }
 
   public User getBeneficiary() {
@@ -112,9 +112,9 @@ public class DonationBox {
       return true;
     if (!(o instanceof DonationBox))
       return false;
-      DonationBox donation_box = (DonationBox) o;
-    return Objects.equals(this.id, donation_box.id) && Objects.equals(this.date_started, donation_box.date_started)
-        && Objects.equals(this.date_ended, donation_box.date_ended);
+      DonationBox donationBox = (DonationBox) o;
+    return Objects.equals(this.id, donationBox.id) && Objects.equals(this.dateStarted, donationBox.dateStarted)
+        && Objects.equals(this.dateEnded, donationBox.dateEnded);
   }
 
   @Override
