@@ -1,19 +1,24 @@
-version: '3.3'
+version: '3'
 services:
-  # web:
-  #   image: images/alms-box-docker
-  #   ports:
-  #     - "8080:8080"
-  db:
-    image: mysql
-    restart: always
+  hk-mysql:
+    container_name: hk-mysql
+    image: mysql/mysql-server:5.7
     environment:
-      MYSQL_ROOT_USER: "root"
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_USER: "springuser"
-      MYSQL_PASSWORD: "ThePassword"
-      MYSQL_DATABASE: "MySQL_alms_box"
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: hellokoding
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - "3306:3306"
+    - "3306:3306"
+    restart: always
+
+  registration-login:
+    build: .
     volumes:
-      - /var/lib/mysql/db_example:/alms_box
+    - .:/app
+    - ~/.m2:/root/.m2
+    working_dir: /app
+    ports:
+    - 8080:8080
+    command: mvn clean spring-boot:run
+    depends_on:
+    - hk-mysql

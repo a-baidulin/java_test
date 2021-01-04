@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import almsBox.user.UserRepository;
-import almsBox.user.User;
+import almsBox.auth.repository.UserRepository;
+import almsBox.auth.model.User;
 import almsBox.donationBox.DonationBox;
 import almsBox.donationBox.DonationBoxRepository;
 import almsBox.exceptions.NotFoundException;

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
-import almsBox.user.User;
+import almsBox.auth.model.User;
 import almsBox.donation.Donation;
 
 @Entity

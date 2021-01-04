@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import almsBox.user.User;
+import almsBox.auth.model.User;
 import almsBox.donationBox.DonationBox;
 
 @Entity
