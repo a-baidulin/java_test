@@ -1,5 +1,6 @@
 package almsBox.user;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -9,9 +10,12 @@ import almsBox.exceptions.NotFoundException;
 @Service
 class UserService {
   private final UserRepository repository;
+  private final PasswordEncoder passwordEncoder;
+  int STARTING_ACCOUNT_BALANCE = 20000;
 
-  UserService(UserRepository repository) {
+  UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
     this.repository = repository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   // Aggregate root
@@ -19,7 +23,13 @@ class UserService {
     return repository.findAll();
   }
 
-  User newUser(User newUser) {
+  User registerNew(User newUser) {
+    // User user = new User(
+    //   newUser.getUsername(),
+    //   passwordEncoder.encode(newUser.getPassword())
+    // );
+    newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+    newUser.setAccountBalance(STARTING_ACCOUNT_BALANCE);
     return repository.save(newUser);
   }
 
@@ -52,5 +62,4 @@ class UserService {
   List<Donation> listDonations(Long id) {
     return repository.listDonations(id);
   }
-
 }
