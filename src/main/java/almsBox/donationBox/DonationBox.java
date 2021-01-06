@@ -1,9 +1,9 @@
 package almsBox.donationBox;
 
 import java.time.LocalDate;
-
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,9 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
-import almsBox.user.User;
 import almsBox.donation.Donation;
+import almsBox.user.User;
 
 @Entity
 public class DonationBox {
@@ -35,7 +36,11 @@ public class DonationBox {
 
   private String name;
   private String description;
+
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dateStarted;
+
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dateEnded;
 
   public DonationBox() {

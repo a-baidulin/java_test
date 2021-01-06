@@ -31,9 +31,9 @@ public class Donation {
   private int amount;       // Donation amount, in cents
   private LocalDate date;   // Donation date
 
-  protected Donation() {}
+  public Donation() {}
 
-  Donation(User user, DonationBox donationBox, int amount, LocalDate date) {
+  public Donation(User user, DonationBox donationBox, int amount, LocalDate date) {
     this.user = user;
     this.donationBox = donationBox;
     this.amount = amount;

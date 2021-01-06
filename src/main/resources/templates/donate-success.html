@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Your donation has been submitted</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Success!</h1>
+    <!-- <p th:text="'Donation box id: ' + ${donation.donationBox}" /> -->
+    <p th:text="'Amount: ' + ${donation.amount}" />
+    <a href="/donate">Keep donating</a>
+</body>
+</html>
