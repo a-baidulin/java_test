@@ -8,7 +8,7 @@ import almsBox.donation.Donation;
 import almsBox.exceptions.NotFoundException;
 
 @Service
-class UserService {
+public class UserService {
   private final UserRepository repository;
   private final PasswordEncoder passwordEncoder;
   int STARTING_ACCOUNT_BALANCE = 20000;
@@ -19,7 +19,7 @@ class UserService {
   }
 
   // Aggregate root
-  List<User> getAll() {
+  public List<User> getAll() {
     return repository.findAll();
   }
 

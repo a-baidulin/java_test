@@ -7,9 +7,17 @@
 <body>
 	<h1>Donate: </h1>
     <form action="#" th:action="@{/donate}" th:object="${donation}" method="post">
-    	<p>Amount: <input type="text" th:field="*{amount}" /></p>
-        <!-- <p>Donation box id: <input type="text" th:field="*{donation_box}" /></p> -->
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Cancel" /></p>
+      <p>Amount: <input type="text" th:field="*{amount}" /></p>
+      <div>
+        <select th:field="*{donationBox}" >
+          <option
+            th:each="box : ${boxList}"
+            th:value="${box.id}"
+            th:utext="${box.name}"
+          ></option>
+        </select>
+      </div>
+      <p><input type="submit" value="Submit" /> <input type="reset" value="Cancel" /></p>
     </form>
 </body>
 </html>

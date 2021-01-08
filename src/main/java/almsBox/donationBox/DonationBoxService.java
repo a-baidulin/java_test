@@ -21,7 +21,7 @@ public class DonationBoxService {
   }
 
   // Aggregate root
-  List<DonationBox> getAll() {
+  public List<DonationBox> getAll() {
     return this.donationBoxRepository.findAll();
   }
 
