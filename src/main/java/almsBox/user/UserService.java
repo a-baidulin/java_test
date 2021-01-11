@@ -1,8 +1,8 @@
 package almsBox.user;
 
+import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 import almsBox.donation.Donation;
 import almsBox.exceptions.NotFoundException;
@@ -24,10 +24,6 @@ public class UserService {
   }
 
   User registerNew(User newUser) {
-    // User user = new User(
-    //   newUser.getUsername(),
-    //   passwordEncoder.encode(newUser.getPassword())
-    // );
     newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
     newUser.setAccountBalance(STARTING_ACCOUNT_BALANCE);
     return repository.save(newUser);
