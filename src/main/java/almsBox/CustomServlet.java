@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/greeting/*", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/network_test/*", loadOnStartup = 1)
 public class CustomServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
@@ -19,6 +19,6 @@ public class CustomServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-    out.println("<h3>Hello Ukraine!</h3>");
+    out.println("TEST MESSAGE!");
   }
 }

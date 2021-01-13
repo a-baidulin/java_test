@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import almsBox.donation.Donation;
 
 @RestController
-class UserController {
+public class UserController {
   private final UserService service;
 
   public UserController(UserService service) {

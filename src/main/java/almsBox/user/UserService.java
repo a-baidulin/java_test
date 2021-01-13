@@ -31,7 +31,7 @@ public class UserService {
 
   // Single item
 
-  User getUser(Long id) {
+  public User getUser(Long id) {
 
     return repository.findById(id)
       .orElseThrow(() -> new NotFoundException(id));
